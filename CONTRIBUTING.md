@@ -56,3 +56,43 @@ python manage.py createsuperuser
 ```
 admin.site.register(models.UserProfile)
 ```
+
+## To add views to project for API App, go to {{project-name}}/urls and add 
+
+```
+from django.urls import path,include
+
+# a new path for the APIView
+path('api/',include('{{app-name}}.urls'))
+```
+
+## To add urls to application go to {{app-name}} and add urls.py, then to urls.py add
+
+```
+from django.urls import path
+from profiles_api import views
+
+urlpatterns = [
+	path('resource-name/', views.{{APIView-Name}}.as_view())
+]
+
+the above allow a user to get to resource by {{base_url}}/api/{{resource-name}}
+```
+
+## For viewsets in {{app-name}}/urls.py
+
+```
+from django.urls import path,include
+
+from rest_framework.routers import DefaultRouter
+
+from profiles_api import views
+
+router = DefaultRouter()
+router.register('{{resource-name}}', views.{{viewset-name}}, base_name='{{resource-name}}')
+
+urlpatterns = [
+	path('resource-name/', views.{{APIView-Name}}.as_view()),
+	path('',include(router.urls))
+]
+```
