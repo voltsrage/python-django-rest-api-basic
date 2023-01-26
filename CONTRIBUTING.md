@@ -44,3 +44,15 @@ python manage.py makemigrations {{app-name}}
 ```
 python manage.py migrate
 ```
+
+## To create superuser
+
+```
+python manage.py createsuperuser
+```
+
+## After model is added, django admin needs to be notified, so go to {{app-name}}/admin.py
+
+```
+admin.site.register(models.UserProfile)
+```
