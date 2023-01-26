@@ -96,3 +96,11 @@ urlpatterns = [
 	path('',include(router.urls))
 ]
 ```
+
+## To test authentication install ModHeader Chrome extension
+## Then in Request Headers
+
+```
+Name  					Value
+Authorization   {{Token}}
+```
